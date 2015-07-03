@@ -1,0 +1,30 @@
+Source: dcmtkpp
+Priority: extra
+Maintainer: Julien Lamy <lamy@unistra.fr>
+Build-Depends: debhelper (>= 8.0.0), libjsoncpp-dev, libdcmtk2-dev, libicu-dev,
+ cmake, libboost-test-dev
+Standards-Version: 3.9.2
+Section: libs
+Homepage: https://github.com/lamyj/dcmtkpp
+
+Package: libdcmtkpp-dev
+Section: libdevel
+Architecture: any
+Depends: libdcmtkpp (= ${binary:Version}), libjsoncpp-dev, libdcmtk2-dev, 
+ libicu-dev
+Description: Set of wrappers around DCMTK (runtime libraries)
+ <insert long description, indented with spaces>
+ DCMTK++ is a set of wrappers around DCMTK to have an easier API, notably 
+ for the networking part. 
+ .
+ This package contains the runtime libraries.
+
+Package: libdcmtkpp
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Set of wrappers around DCMTK (headers files)
+ DCMTK++ is a set of wrappers around DCMTK to have an easier API, notably 
+ for the networking part. 
+ .
+ This package contains the headers.
