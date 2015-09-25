@@ -1,3 +1,9 @@
+dcmtkpp (0.2.2-1) unstable; urgency=low
+
+  * new version 0.2.2
+
+ -- Romain Lahaxe <lahaxe@unistra.fr>  Fri, 25 Sep 2015 09:31:54 +0200
+
 dcmtkpp (0.2.1-1) unstable; urgency=low
 
   * Initial release
