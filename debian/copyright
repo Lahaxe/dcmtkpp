@@ -1,9 +1,11 @@
-Format: http://dep.debian.net/deps/dep5
-Upstream-Name: dcmtkpp
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: DCMTK++
 Source: https://github.com/lamyj/dcmtkpp
 
 Files: *
-Copyright: 2015 Julien Lamy <lamy@unistra.fr>
+Copyright: © 2015 Julien Lamy <lamy@unistra.fr>
+License: CeCILL-B
+
 License: CeCILL-B
  CeCILL-B FREE SOFTWARE LICENSE AGREEMENT
  .
@@ -451,7 +453,7 @@ License: CeCILL-B
  .
      Article 11 - MISCELLANEOUS
  .
- 
+ .
        11.1 EXCUSABLE EVENTS
  .
  Neither Party shall be liable for any or all delay, or failure to
@@ -519,4 +521,3 @@ License: CeCILL-B
  .
  .
  Version 1.0 dated 2006-09-05.
- 

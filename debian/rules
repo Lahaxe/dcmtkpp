@@ -1,15 +1,29 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-# This file was originally written by Joey Hess and Craig Small.
-# As a special exception, when this file is copied by dh-make into a
-# dh-make output file, you may use that output file without restriction.
-# This special exception was added by Craig Small in version 0.37 of dh-make.
 
-# Uncomment this to turn on verbose mode.
-export DH_VERBOSE=1
-export CXXFLAGS=-std=c++0x
-export DEB_BUILD_OPTIONS=nocheck
+export DEB_CXXFLAGS_MAINT_APPEND  = -std=c++0x
+
+CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
+LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
 %:
-	dh $@ --parallel --buildsystem=cmake
+	dh $@ --builddirectory=build --parallel
+
+override_dh_auto_build:
+	dh_auto_build
+	doxygen && mv doc build
+
+override_dh_auto_test:
+	cd build && ../tests/run.sh
+
+override_dh_install:
+	dh_install
+	d-shlibmove \
+		--commit --multiarch --exclude-a --exclude-la \
+		--movedev debian/tmp/usr/include/* usr/include \
+		--override s/libjsoncpp.-dev/libjsoncpp-dev/ \
+		--override s/libdcm.*-dev/libdcmtk-dev/ \
+		--override s/libof.*-dev/libdcmtk-dev/ \
+		--override s/libicuuc.*-dev/libicu-dev/ \
+		debian/tmp/usr/lib/*.so

@@ -1,30 +1,71 @@
 Source: dcmtkpp
-Priority: extra
-Maintainer: Julien Lamy <lamy@unistra.fr>
-Build-Depends: debhelper (>= 8.0.0), libjsoncpp-dev, libdcmtk2-dev, libicu-dev,
- cmake, libboost-test-dev
-Standards-Version: 3.9.2
-Section: libs
+Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
+Uploaders: Julien Lamy <lamy@unistra.fr>
+Section: science
+Priority: optional
+Build-Depends: debhelper (>= 9),
+               d-shlibs,
+               cmake,
+               libjsoncpp-dev,
+               libdcmtk2-dev,
+               libicu-dev (>= 4.8.1.1),
+               zlib1g-dev,
+               libboost-test-dev (>= 1.46.1),
+               dcmtk (>= 3.6.0),
+               doxygen,
+               graphviz
+Standards-Version: 3.9.6
+Vcs-Browser: http://anonscm.debian.org/viewvc/debian-med/trunk/packages/dcmtkpp/trunk/
+Vcs-Svn: svn://anonscm.debian.org/debian-med/trunk/packages/dcmtkpp/trunk/
 Homepage: https://github.com/lamyj/dcmtkpp
 
-Package: libdcmtkpp-dev
-Section: libdevel
+Package: libdcmtkpp0
 Architecture: any
-Depends: libdcmtkpp (= ${binary:Version}), libjsoncpp-dev, libdcmtk2-dev, 
- libicu-dev
-Description: Set of wrappers around DCMTK (runtime libraries)
- <insert long description, indented with spaces>
- DCMTK++ is a set of wrappers around DCMTK to have an easier API, notably 
- for the networking part. 
- .
- This package contains the runtime libraries.
-
-Package: libdcmtkpp
 Section: libs
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Set of wrappers around DCMTK (headers files)
- DCMTK++ is a set of wrappers around DCMTK to have an easier API, notably 
- for the networking part. 
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: C++ wrapper library for the DCMTK DICOM toolkit
+ DCMTK++ is a C++ wrapper library for DCMTK, a C++ toolkit handling the DICOM
+ medical imaging standard. DCMTK++ leverages C++ constructs to provide a
+ more user-friendly API, notably for the networking part. Included in
+ DCMTK++ are exception-based error handling, generic access to datasets
+ elements, standard JSON representation of datasets, and generic
+ implementation of messages, clients and servers for the various DICOM
+ protocols.
  .
- This package contains the headers.
+ This package contains the shared library.
+
+Package: libdcmtkpp0-dev
+Architecture: any
+Section: libdevel
+Depends: libdcmtkpp0 (= ${binary:Version}),
+         ${devlibs:Depends},
+         ${misc:Depends}
+Provides: libdcmtkpp-dev
+Conflicts: libdcmtkpp-dev
+Description: C++ wrapper library for the DCMTK DICOM toolkit (development files)
+ DCMTK++ is a C++ wrapper library for DCMTK, a C++ toolkit handling the DICOM
+ medical imaging standard. DCMTK++ leverages C++ constructs to provide a
+ more user-friendly API, notably for the networking part. Included in
+ DCMTK++ are exception-based error handling, generic access to datasets
+ elements, standard JSON representation of datasets, and generic
+ implementation of messages, clients and servers for the various DICOM
+ protocols.
+ .
+ This package contains the development files.
+
+Package: libdcmtkpp0-doc
+Architecture: all
+Section: doc
+Depends: libjs-jquery,
+         ${misc:Depends}
+Description: C++ wrapper library for the DCMTK DICOM toolkit (documentation)
+ DCMTK++ is a C++ wrapper library for DCMTK, a C++ toolkit handling the DICOM
+ medical imaging standard. DCMTK++ leverages C++ constructs to provide a
+ more user-friendly API, notably for the networking part. Included in
+ DCMTK++ are exception-based error handling, generic access to datasets
+ elements, standard JSON representation of datasets, and generic
+ implementation of messages, clients and servers for the various DICOM
+ protocols.
+ .
+ This package contains the documentation files.
