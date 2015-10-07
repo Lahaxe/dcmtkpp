@@ -1,3 +1,9 @@
+dcmtkpp (0.3.1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Julien Lamy <lamy@unistra.fr>  Wed, 07 Oct 2015 17:09:37 +0200
+
 dcmtkpp (0.3-1) unstable; urgency=low
 
   * new version 0.3
